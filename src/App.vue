@@ -1,28 +1,67 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <nav>
+<ul>
+  <li class="nav-item">
+       <h2><router-link class="nav-link" :to="{name: 'Home'}" exact="">Home </router-link></h2>
+         </li>
+  <li class="nav-item">
+      <h2> <router-link class="nav-link" :to="{name: 'Ticket'}" exact> Tickets</router-link> </h2>
+  </li>
+</ul>
+      </nav>
+      </header>
+    <main>
+      <router-view />
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+};
 </script>
 
 <style>
+body{
+  background: linear-gradient(to bottom, #555, #999);
+  background-attachment: fixed;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  
+}
+h2{
+  color:black;
+  
+}
+.nav-link {
+  color: black;
+  text-decoration: none;
+  text-underline-position: auto;
+}
+header{
+  background-color: azure;
+  width: 1084px;
+  margin: 0 auto;
+}
+.router-link-active{
+  color: crimson
+}
+main{
+  margin: 0 auto;
+  padding:  30px;
+  background-color: white;
+  width: 1024px;
+  min-height: 300px;
+}
+.nav-item{
+  display: inline-block;
+  padding:  5px 10px;
+  border-right: 1px solid #999;
 }
 </style>
