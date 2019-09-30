@@ -9,6 +9,9 @@
   <li class="nav-item">
       <h2> <router-link class="nav-link" :to="{name: 'Ticket'}" exact> Tickets</router-link> </h2>
   </li>
+  <li class="nav-item">
+      <h2> <router-link class="nav-link" :to="{name: 'User'}" exact> Users</router-link> </h2>
+  </li>
 </ul>
       </nav>
       </header>

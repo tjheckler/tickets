@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\timot\\tickets\\tickets.csproj",
+  "FilePath": "c:\\Users\\timot\\tickets\\Tickets.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2874,7 +2874,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "tickets",
+  "RootNamespace": "Tickets",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

@@ -105,10 +105,10 @@ export default {
       this.model = Object.assign({}, ticket);
     },
     async createTicket() {
-      const isUpdate = !!this.model.id;
+      const isUpdate = !!this.model.ticketsId;
 
       if (isUpdate) {
-        await api.update(this.model.id, this.model);
+        await api.update(this.model.ticketsId, this.model);
       } else {
         await api.create(this.model);
       }
@@ -121,7 +121,7 @@ export default {
     },
     async deleteTicket(id) {
       if (confirm("Are you sure you want to delete this record?")) {
-        // if you are editing a weight record you deleted, remove it from the form
+        // if you are editing a record you deleted, remove it from the form
         if (this.model.id === id) {
           this.model = {};
         }
