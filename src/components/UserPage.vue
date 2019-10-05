@@ -1,14 +1,12 @@
 <template>
   <div class="container-fluid mt-4">
-    <h1 class="h1">Tickets</h1>
+    <h1 class="h1">Users</h1>
 
     <b-row>
       <b-col>
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Date Time</th>
               <th>Name</th>
               <th>Email</th>
               <th>Telephone</th>
@@ -19,28 +17,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="record in records" :key="record.ticketsId">
-              <td>{{record.ticketsId}}</td>
-              <td>{{record.date}}</td>
+            <tr v-for="record in records" :key="record.userId">
               <td>{{record.name}}</td>
               <td>{{record.email}}</td>
               <td>{{record.telephone}}</td>
               <td>{{record.location}}</td>
               <td>{{record.region}}</td>
               <td class="text-right">
-                <a href="#" @click.prevent="updateTicket(record)">Edit</a>
-                <a href="#" @click.prevent="deleteTicket(record.ticketsId)">Delete</a>
+                <a href="#" @click.prevent="updateUser(record)">Edit</a>
+                <a href="#" @click.prevent="deleteUser(record.userId)">Delete</a>
               </td>
             </tr>
           </tbody>
         </table>
       </b-col>
       <b-col lg="3">
-        <b-card :title="(model.ticketsId ? 'Edit Ticket ID#' + model.ticketsId : 'New Ticket')">
-          <form @submit.prevent="createTicket">
-            <b-form-group label="Date Time">
-              <b-form-input rows="4" v-model="model.dateTime" type="datetime-local"></b-form-input>
-            </b-form-group>
+        <b-card :title="(model.userId ? 'Edit User ID# ' + model.userId :'New User')">
+          <form @submit.prevent="createUser">
             <b-form-group label="Name">
               <b-form-input type="text" v-model="model.name"></b-form-input>
             </b-form-group>
@@ -56,20 +49,8 @@
             <b-form-group label="Region">
               <b-form-input rows="4" v-model="model.region" type="text"></b-form-input>
             </b-form-group>
-            <b-form-group label="Computer Name">
-              <b-form-input rows="4" v-model="model.computerName" type="text"></b-form-input>
-            </b-form-group>
-            <b-form-group label="Asset Tag">
-              <b-form-input rows="4" v-model="model.assetTag"></b-form-input>
-            </b-form-group>
-            <b-form-group label="Subject">
-              <b-form-input rows="4" v-model="model.subject" type="text"></b-form-input>
-            </b-form-group>
-            <b-form-group label="Details">
-              <textarea rows="25" v-model="model.body" cols="75" type="text"></textarea>
-            </b-form-group>
             <div>
-              <b-btn type="submit" variant="success">Save Ticket</b-btn>
+              <b-btn type="submit" variant="success">Save User</b-btn>
             </div>
           </form>
         </b-card>
@@ -78,7 +59,7 @@
   </div>
 </template>
 <script>
-import api from "@/TicketsApiService";
+import api from "@/UsersApiService";
 
 export default {
   data() {
@@ -97,15 +78,15 @@ export default {
       } finally {
       }
     },
-    async updateTicket(ticket) {
+    async updateUser(user) {
       // you use Object.assign() to create a new (separate) instance
-      this.model = Object.assign({}, ticket);
+      this.model = Object.assign({}, user);
     },
-    async createTicket() {
-      const isUpdate = !!this.model.ticketsId;
+    async createUser() {
+      const isUpdate = !!this.model.userId;
 
       if (isUpdate) {
-        await api.update(this.model.ticketsId, this.model);
+        await api.update(this.model.userId, this.model);
       } else {
         await api.create(this.model);
       }
@@ -116,10 +97,10 @@ export default {
       // Fetch all records again to have latest data
       await this.getAll();
     },
-    async deleteTicket(id) {
+    async deleteUser(id) {
       if (confirm("Are you sure you want to delete this record?")) {
         // if you are editing a record you deleted, remove it from the form
-        if (this.model.ticketsId === id) {
+        if (this.model.userId === id) {
           this.model = {};
         }
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://localhost:49967/api/Tickets",
+  baseURL: "http://localhost:49967/api/Locations",
   json: true
 });
 
@@ -17,15 +17,15 @@ export default {
   },
 
   getAll() {
-    return this.execute("get", "/", "tickets");
+    return this.execute("get", "/");
   },
   create(data) {
-    return this.execute("post", "/", "tickets", data);
+    return this.execute("post", "/", data);
   },
   update(id, data) {
-    return this.execute("put", `/${id}`, "tickets", data);
+    return this.execute("put", `/${id}`, data);
   },
   delete(id) {
-    return this.execute("delete", `/${id}`, "tickets");
+    return this.execute("delete", `/${id}`);
   }
 };
